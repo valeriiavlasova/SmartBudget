@@ -1,0 +1,38 @@
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:clipToPadding="false">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="18dp" android:paddingTop="12dp" android:paddingBottom="20dp">
+<TextView style="@style/Mint.Heading" android:text="@string/mint_expenses"/>
+<TextView style="@style/Mint.Subtitle" android:text="@string/mint_expenses_help"/>
+<LinearLayout android:layout_width="match_parent" android:layout_height="44dp" android:layout_marginTop="16dp" android:background="@drawable/mint_search" android:gravity="center_vertical">
+<ImageButton android:id="@+id/previousMonth" style="@style/Mint.IconButton" android:rotation="180" android:src="@drawable/ic_mint_chevron" android:contentDescription="@string/mint_previous_month"/>
+<com.google.android.material.button.MaterialButton android:id="@+id/btnMonth" style="@style/Widget.Material3.Button.TextButton" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/text_primary" android:insetTop="0dp" android:insetBottom="0dp" app:icon="@drawable/ic_mint_calendar" app:iconGravity="textStart" app:iconSize="18dp"/>
+<ImageButton android:id="@+id/nextMonth" style="@style/Mint.IconButton" android:src="@drawable/ic_mint_chevron" android:contentDescription="@string/mint_next_month"/>
+</LinearLayout>
+<com.google.android.material.card.MaterialCardView android:id="@+id/cardMonthlySummary" style="@style/Mint.Card" android:layout_marginTop="16dp" app:cardBackgroundColor="?attr/colorPrimaryContainer" app:strokeWidth="0dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+<LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+<TextView android:id="@+id/tvMonthlySummaryTitle" style="@style/Mint.Body" android:text="@string/global_budget"/>
+<TextView android:id="@+id/tvTotalSpentAmount" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textSize="24sp" android:textColor="@color/text_primary" android:fontFamily="sans-serif-medium"/>
+</LinearLayout>
+<TextView android:id="@+id/remainingAmount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="12dp" android:paddingVertical="10dp" android:background="@drawable/mint_remaining" android:gravity="center" android:textColor="@color/text_primary" android:textSize="12sp"/>
+</LinearLayout>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginTop="16dp">
+<com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/progressTotalBudget" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" app:indicatorTrackGapSize="0dp" app:trackStopIndicatorSize="0dp" app:trackThickness="14dp" app:trackCornerRadius="7dp" app:trackColor="?attr/budgetTrackColor" app:indicatorColor="?attr/colorPrimary"/>
+<TextView android:id="@+id/tvBudgetStatusInfo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="14dp" android:textColor="@color/text_primary" android:textSize="11sp"/>
+</LinearLayout>
+<com.google.android.material.button.MaterialButton android:id="@+id/btnEditGlobalBudget" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone"/>
+</LinearLayout></com.google.android.material.card.MaterialCardView>
+<LinearLayout android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginTop="18dp">
+<com.google.android.material.button.MaterialButton android:id="@+id/addPurchase" style="@style/Mint.Action" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:text="@string/add_expense_fab" app:icon="@drawable/ic_add"/>
+<com.google.android.material.button.MaterialButton android:id="@+id/scanPurchase" style="@style/Mint.Action" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:layout_marginStart="12dp" android:text="@string/scan_receipt" android:textColor="@color/text_primary" app:backgroundTint="?attr/colorPrimaryContainer" app:iconTint="@color/text_primary" app:icon="@drawable/ic_mint_scan"/>
+</LinearLayout>
+<EditText android:id="@+id/searchPurchases" android:importantForAutofill="no" android:layout_width="match_parent" android:layout_height="44dp" android:layout_marginTop="18dp" android:background="@drawable/mint_search" android:paddingHorizontal="16dp" android:drawableStart="@drawable/ic_mint_search" android:drawablePadding="12dp" android:textSize="14sp" android:hint="@string/search_purchases" android:singleLine="true" android:inputType="text"/>
+<LinearLayout android:layout_width="match_parent" android:layout_height="48dp" android:gravity="center_vertical" android:layout_marginTop="6dp">
+<TextView android:id="@+id/tvRecentExpensesHeader" style="@style/Mint.CardTitle" android:layout_width="0dp" android:layout_weight="1" android:text="@string/recent_expenses_title"/>
+<com.google.android.material.button.MaterialButton android:id="@+id/filterPurchases" style="@style/Widget.Material3.Button.TextButton" android:layout_width="wrap_content" android:layout_height="48dp" android:minWidth="48dp" android:paddingHorizontal="0dp" android:text="@string/mint_see_all" android:textSize="12sp"/>
+</LinearLayout>
+<com.google.android.material.card.MaterialCardView style="@style/Mint.Card">
+<androidx.recyclerview.widget.RecyclerView android:id="@+id/rvExpenses" android:layout_width="match_parent" android:layout_height="wrap_content" android:nestedScrollingEnabled="false"/>
+</com.google.android.material.card.MaterialCardView>
+<TextView android:id="@+id/tvEmptyExpenses" style="@style/Mint.Subtitle" android:text="@string/empty_month" android:padding="20dp" android:visibility="gone"/>
+</LinearLayout></androidx.core.widget.NestedScrollView>

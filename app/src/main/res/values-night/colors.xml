@@ -1,0 +1,2 @@
+<resources><color name="background_light">#101218</color><color name="surface_white">#1C2029</color><color name="text_primary">#F0F1F7</color><color name="text_secondary">#BCC3D1</color><color name="divider_color">#343B49</color><color name="primary_light">#29344C</color><color name="status_safe">#81C995</color><color name="status_warning">#FFBD69</color><color name="status_exceeded">#FF8F98</color>    <color name="mint_surface">#173B2A</color>
+</resources>

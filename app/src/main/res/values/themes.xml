@@ -1,0 +1,154 @@
+<resources>
+  <style name="Theme.FinanseOsobiste" parent="Theme.Material3.DayNight.NoActionBar">
+    <item name="android:statusBarColor">@color/background_light</item>
+    <item name="android:navigationBarColor">@color/surface_white</item>
+    <item name="elevationOverlayEnabled">false</item>
+    <item name="colorSurface">@color/surface_white</item>
+    <item name="colorOnSurface">@color/text_primary</item>
+    <item name="android:fontFamily">sans</item>
+    <item name="materialButtonStyle">@style/Widget.SmartBudget.Button</item>
+    <item name="android:windowBackground">@color/background_light</item>
+    <item name="android:windowLightStatusBar">@bool/light_system_bars</item>
+    <item name="colorOnPrimaryContainer">@color/text_primary</item>
+    <item name="colorOnSecondaryContainer">@color/text_primary</item>
+    <item name="colorOnSecondary">?attr/colorOnPrimary</item>
+    <item name="colorSurfaceVariant">@color/surface_white</item>
+    <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+    <item name="colorPrimary">@color/theme_mint_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_mint_primary</item>
+    <item name="colorSecondary">@color/theme_mint_secondary</item>
+    <item name="colorPrimaryContainer">@color/theme_mint_container</item>
+    <item name="colorSecondaryContainer">@color/theme_mint_secondary_container</item>
+    <item name="budgetTrackColor">@color/theme_mint_track</item>
+    <item name="remainingSurfaceColor">@color/theme_mint_remaining</item>
+    <item name="colorOnPrimary">@color/theme_mint_on_primary</item>
+  </style>
+  <style name="Theme.FinanseOsobiste.Lavender" parent="Theme.FinanseOsobiste">
+    <item name="colorPrimary">@color/theme_lavender_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_lavender_primary</item>
+    <item name="colorSecondary">@color/theme_lavender_secondary</item>
+    <item name="colorPrimaryContainer">@color/theme_lavender_container</item>
+    <item name="colorSecondaryContainer">@color/theme_lavender_secondary_container</item>
+    <item name="budgetTrackColor">@color/theme_lavender_track</item>
+    <item name="remainingSurfaceColor">@color/theme_lavender_remaining</item>
+    <item name="colorOnPrimary">@color/theme_lavender_on_primary</item>
+  </style>
+  <style name="Theme.FinanseOsobiste.Coral" parent="Theme.FinanseOsobiste">
+    <item name="colorPrimary">@color/theme_coral_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_coral_primary</item>
+    <item name="colorSecondary">@color/theme_coral_secondary</item>
+    <item name="colorPrimaryContainer">@color/theme_coral_container</item>
+    <item name="colorSecondaryContainer">@color/theme_coral_secondary_container</item>
+    <item name="budgetTrackColor">@color/theme_coral_track</item>
+    <item name="remainingSurfaceColor">@color/theme_coral_remaining</item>
+    <item name="colorOnPrimary">@color/theme_coral_on_primary</item>
+  </style>
+  <style name="Theme.FinanseOsobiste.Amber" parent="Theme.FinanseOsobiste">
+    <item name="colorPrimary">@color/theme_amber_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_amber_primary</item>
+    <item name="colorSecondary">@color/theme_amber_secondary</item>
+    <item name="colorPrimaryContainer">@color/theme_amber_container</item>
+    <item name="colorSecondaryContainer">@color/theme_amber_secondary_container</item>
+    <item name="budgetTrackColor">@color/theme_amber_track</item>
+    <item name="remainingSurfaceColor">@color/theme_amber_remaining</item>
+    <item name="colorOnPrimary">@color/theme_amber_on_primary</item>
+  </style>
+  <style name="Theme.FinanseOsobiste.Rose" parent="Theme.FinanseOsobiste">
+    <item name="colorPrimary">@color/theme_rose_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_rose_primary</item>
+    <item name="colorSecondary">@color/theme_rose_secondary</item>
+    <item name="colorPrimaryContainer">@color/theme_rose_container</item>
+    <item name="colorSecondaryContainer">@color/theme_rose_secondary_container</item>
+    <item name="budgetTrackColor">@color/theme_rose_track</item>
+    <item name="remainingSurfaceColor">@color/theme_rose_remaining</item>
+    <item name="colorOnPrimary">@color/theme_rose_on_primary</item>
+  </style>
+  <style name="Theme.FinanseOsobiste.Indigo" parent="Theme.FinanseOsobiste">
+    <item name="colorPrimary">@color/theme_indigo_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_indigo_primary</item>
+    <item name="colorSecondary">@color/theme_indigo_secondary</item>
+    <item name="colorPrimaryContainer">@color/theme_indigo_container</item>
+    <item name="colorSecondaryContainer">@color/theme_indigo_secondary_container</item>
+    <item name="budgetTrackColor">@color/theme_indigo_track</item>
+    <item name="remainingSurfaceColor">@color/theme_indigo_remaining</item>
+    <item name="colorOnPrimary">@color/theme_indigo_on_primary</item>
+  </style>
+  <style name="Theme.FinanseOsobiste.Sky" parent="Theme.FinanseOsobiste">
+    <item name="colorPrimary">@color/theme_sky_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_sky_primary</item>
+    <item name="colorSecondary">@color/theme_sky_secondary</item>
+    <item name="colorPrimaryContainer">@color/theme_sky_container</item>
+    <item name="colorSecondaryContainer">@color/theme_sky_secondary_container</item>
+    <item name="budgetTrackColor">@color/theme_sky_track</item>
+    <item name="remainingSurfaceColor">@color/theme_sky_remaining</item>
+    <item name="colorOnPrimary">@color/theme_sky_on_primary</item>
+  </style>
+  <style name="Theme.FinanseOsobiste.Teal" parent="Theme.FinanseOsobiste">
+    <item name="colorPrimary">@color/theme_teal_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_teal_primary</item>
+    <item name="colorSecondary">@color/theme_teal_secondary</item>
+    <item name="colorPrimaryContainer">@color/theme_teal_container</item>
+    <item name="colorSecondaryContainer">@color/theme_teal_secondary_container</item>
+    <item name="budgetTrackColor">@color/theme_teal_track</item>
+    <item name="remainingSurfaceColor">@color/theme_teal_remaining</item>
+    <item name="colorOnPrimary">@color/theme_teal_on_primary</item>
+  </style>
+  <style name="Theme.FinanseOsobiste.Emerald" parent="Theme.FinanseOsobiste">
+    <item name="colorPrimary">@color/theme_emerald_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_emerald_primary</item>
+    <item name="colorSecondary">@color/theme_emerald_secondary</item>
+    <item name="colorPrimaryContainer">@color/theme_emerald_container</item>
+    <item name="colorSecondaryContainer">@color/theme_emerald_secondary_container</item>
+    <item name="budgetTrackColor">@color/theme_emerald_track</item>
+    <item name="remainingSurfaceColor">@color/theme_emerald_remaining</item>
+    <item name="colorOnPrimary">@color/theme_emerald_on_primary</item>
+  </style>
+  <style name="Theme.FinanseOsobiste.Plum" parent="Theme.FinanseOsobiste">
+    <item name="colorPrimary">@color/theme_plum_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_plum_primary</item>
+    <item name="colorSecondary">@color/theme_plum_secondary</item>
+    <item name="colorPrimaryContainer">@color/theme_plum_container</item>
+    <item name="colorSecondaryContainer">@color/theme_plum_secondary_container</item>
+    <item name="budgetTrackColor">@color/theme_plum_track</item>
+    <item name="remainingSurfaceColor">@color/theme_plum_remaining</item>
+    <item name="colorOnPrimary">@color/theme_plum_on_primary</item>
+  </style>
+  <style name="Theme.FinanseOsobiste.Cocoa" parent="Theme.FinanseOsobiste">
+    <item name="colorPrimary">@color/theme_cocoa_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_cocoa_primary</item>
+    <item name="colorSecondary">@color/theme_cocoa_secondary</item>
+    <item name="colorPrimaryContainer">@color/theme_cocoa_container</item>
+    <item name="colorSecondaryContainer">@color/theme_cocoa_secondary_container</item>
+    <item name="budgetTrackColor">@color/theme_cocoa_track</item>
+    <item name="remainingSurfaceColor">@color/theme_cocoa_remaining</item>
+    <item name="colorOnPrimary">@color/theme_cocoa_on_primary</item>
+  </style>
+  <style name="Theme.FinanseOsobiste.Slate" parent="Theme.FinanseOsobiste">
+    <item name="colorPrimary">@color/theme_slate_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_slate_primary</item>
+    <item name="colorSecondary">@color/theme_slate_secondary</item>
+    <item name="colorPrimaryContainer">@color/theme_slate_container</item>
+    <item name="colorSecondaryContainer">@color/theme_slate_secondary_container</item>
+    <item name="budgetTrackColor">@color/theme_slate_track</item>
+    <item name="remainingSurfaceColor">@color/theme_slate_remaining</item>
+    <item name="colorOnPrimary">@color/theme_slate_on_primary</item>
+  </style>
+  <style name="Theme.FinanseOsobiste.Crimson" parent="Theme.FinanseOsobiste">
+    <item name="colorPrimary">@color/theme_crimson_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_crimson_primary</item>
+    <item name="colorSecondary">@color/theme_crimson_secondary</item>
+    <item name="colorPrimaryContainer">@color/theme_crimson_container</item>
+    <item name="colorSecondaryContainer">@color/theme_crimson_secondary_container</item>
+    <item name="budgetTrackColor">@color/theme_crimson_track</item>
+    <item name="remainingSurfaceColor">@color/theme_crimson_remaining</item>
+    <item name="colorOnPrimary">@color/theme_crimson_on_primary</item>
+  </style>
+  <style name="Widget.SmartBudget.Button" parent="Widget.Material3.Button">
+    <item name="cornerRadius">16dp</item>
+    <item name="android:textAllCaps">false</item>
+    <item name="android:minHeight">52dp</item>
+  </style>
+  <style name="Widget.SmartBudget.NavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+    <item name="android:color">?attr/colorPrimaryContainer</item>
+  </style>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_dashboard"
+        android:icon="@drawable/ic_mint_wallet"
+        android:title="@string/nav_dashboard" />
+    <item
+        android:id="@+id/nav_charts"
+        android:icon="@drawable/ic_mint_chart"
+        android:title="@string/nav_charts" />
+    <item
+        android:id="@+id/nav_limits"
+        android:icon="@drawable/ic_mint_shield"
+        android:title="@string/nav_limits" />
+<item android:id="@+id/nav_planner" android:icon="@drawable/ic_mint_flag" android:title="@string/planner" />
+</menu>

@@ -1,0 +1,1 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"><item android:state_checked="true" android:drawable="@drawable/mint_chip"/><item android:drawable="@android:color/transparent"/></selector>
