@@ -60,9 +60,11 @@ class ChartsFragment : Fragment() {
             val months = (5 downTo 0).map { selected.minusMonths(it.toLong()) }
             val totals = rows.groupBy { java.time.YearMonth.from(java.time.Instant.ofEpochMilli(it.timestamp).atZone(java.time.ZoneId.systemDefault())) }
             val entries = months.mapIndexed { index, month -> BarEntry(index.toFloat(), totals[month].orEmpty().sumOf { it.amount }.toFloat()) }
+            var selectedIndex = months.lastIndex
             val set = BarDataSet(entries, "").apply {
                 colors = months.map { if(it == selected) MintUi.palette(requireContext())[0] else MintUi.secondaryContainer(requireContext()) }
                 setDrawValues(false)
+                highLightAlpha = 0
             }
             binding.monthlyChart.apply {
                 description.isEnabled = false; legend.isEnabled = false; axisRight.isEnabled = false
@@ -75,7 +77,39 @@ class ChartsFragment : Fragment() {
                 xAxis.granularity = 1f; xAxis.textSize = 11f; xAxis.textColor = androidx.core.content.ContextCompat.getColor(context,R.color.text_secondary)
                 xAxis.valueFormatter = IndexAxisValueFormatter(months.map { it.format(java.time.format.DateTimeFormatter.ofPattern("MMM", resources.configuration.locales[0])) })
                 data = BarData(set).apply { barWidth = 0.62f }
-                renderer = MintBarRenderer(this, animator, viewPortHandler)
+                val mintRenderer = MintBarRenderer(this, animator, viewPortHandler)
+                renderer = mintRenderer
+                fun showMonth(index: Int) {
+                    selectedIndex = index.coerceIn(months.indices)
+                    mintRenderer.selectedIndex = selectedIndex
+                    set.colors = months.indices.map { if (it == selectedIndex) MintUi.primary(context) else MintUi.secondaryContainer(context) }
+                    binding.monthlySelection.text = getString(R.string.month_spending_value,
+                        months[selectedIndex].format(java.time.format.DateTimeFormatter.ofPattern("MMMM yyyy", resources.configuration.locales[0])),
+                        MintUi.money(totals[months[selectedIndex]].orEmpty().sumOf { it.amount }))
+                    invalidate()
+                }
+                setOnChartValueSelectedListener(object : com.github.mikephil.charting.listener.OnChartValueSelectedListener {
+                    override fun onValueSelected(e: com.github.mikephil.charting.data.Entry?, h: com.github.mikephil.charting.highlight.Highlight?) {
+                        if (e != null) showMonth(e.x.roundToInt())
+                    }
+                    override fun onNothingSelected() { showMonth(selectedIndex) }
+                })
+                onChartGestureListener = object : com.github.mikephil.charting.listener.OnChartGestureListener {
+                    override fun onChartSingleTapped(e: android.view.MotionEvent) {
+                        if (!viewPortHandler.isInBounds(e.x, e.y)) return
+                        val point = getTransformer(com.github.mikephil.charting.components.YAxis.AxisDependency.LEFT).getValuesByTouchPoint(e.x, e.y)
+                        showMonth(point.x.roundToInt())
+                        com.github.mikephil.charting.utils.MPPointD.recycleInstance(point)
+                    }
+                    override fun onChartGestureStart(e: android.view.MotionEvent?, g: com.github.mikephil.charting.listener.ChartTouchListener.ChartGesture?) {}
+                    override fun onChartGestureEnd(e: android.view.MotionEvent?, g: com.github.mikephil.charting.listener.ChartTouchListener.ChartGesture?) {}
+                    override fun onChartLongPressed(e: android.view.MotionEvent?) {}
+                    override fun onChartDoubleTapped(e: android.view.MotionEvent?) {}
+                    override fun onChartFling(a: android.view.MotionEvent?, b: android.view.MotionEvent?, x: Float, y: Float) {}
+                    override fun onChartScale(e: android.view.MotionEvent?, x: Float, y: Float) {}
+                    override fun onChartTranslate(e: android.view.MotionEvent?, x: Float, y: Float) {}
+                }
+                showMonth(selectedIndex)
                 setExtraOffsets(0f,22f,0f,8f); invalidate()
             }
         }
@@ -119,6 +153,7 @@ class ChartsFragment : Fragment() {
         binding.barChartLimits.apply {
             description.isEnabled = false
             setPinchZoom(false)
+            setScaleEnabled(false)
             setDrawGridBackground(false)
             setDrawBarShadow(false)
             setNoDataText(getString(R.string.no_chart_data))
@@ -128,7 +163,8 @@ class ChartsFragment : Fragment() {
                 granularity = 1f
                 setCenterAxisLabels(true)
                 setDrawGridLines(false)
-                textSize = 10f
+                textSize = 11f
+                setDrawAxisLine(false)
             }
             axisLeft.apply {
                 axisMinimum = 0f
@@ -139,13 +175,19 @@ class ChartsFragment : Fragment() {
             legend.isWordWrapEnabled = true
             legend.textColor = androidx.core.content.ContextCompat.getColor(context, R.color.text_primary)
             xAxis.textColor = legend.textColor; axisLeft.textColor = legend.textColor
-            setExtraOffsets(12f, 8f, 24f, 16f)
+            setExtraOffsets(4f, 8f, 12f, 12f)
+            setXAxisRenderer(CategoryAxisRenderer(viewPortHandler, xAxis,
+                getTransformer(com.github.mikephil.charting.components.YAxis.AxisDependency.LEFT),
+                this, resources.displayMetrics.density))
+            axisLeft.setLabelCount(4, false)
         }
     }
 
     private fun updatePieChart(summaries: List<CategoryExpenseSummary>) {
         binding.pieLegend.removeAllViews()
         val activeCategories = summaries.filter { it.totalSpent > 0.0 }.sortedBy { it.categoryId }
+        binding.categoryChartEmpty.visibility = if (activeCategories.isEmpty()) View.VISIBLE else View.GONE
+        binding.categoryChartContent.visibility = if (activeCategories.isEmpty()) View.GONE else View.VISIBLE
         if (activeCategories.isEmpty()) {
             binding.pieChartCategories.clear()
             binding.pieChartCategories.invalidate()
@@ -223,16 +265,9 @@ class ChartsFragment : Fragment() {
         summaries.forEachIndexed { index, summary ->
             spentEntries.add(BarEntry(index.toFloat(), summary.totalSpent.toFloat()))
             limitEntries.add(BarEntry(index.toFloat(), summary.monthlyLimit.toFloat()))
-            labels.add("${index + 1}")
+            labels.add(AppSettings.category(requireContext(), summary.categoryName))
         }
 
-        binding.barLegend.removeAllViews()
-        summaries.forEachIndexed { index, item ->
-            binding.barLegend.addView(android.widget.TextView(requireContext()).apply {
-                text = "${index + 1}. ${AppSettings.category(context, item.categoryName)}"
-                setPadding(0,8,0,8)
-            })
-        }
         val spentDataSet = BarDataSet(spentEntries, getString(R.string.spent)).apply {
             color = MintUi.palette(requireContext())[2]
             setDrawValues(false)
@@ -254,7 +289,7 @@ class ChartsFragment : Fragment() {
         }
 
         binding.barChartLimits.apply {
-            layoutParams = layoutParams.apply { height = (maxOf(280, summaries.size * 60) * resources.displayMetrics.density).toInt() }
+            layoutParams = layoutParams.apply { height = (maxOf(280, summaries.size * 66) * resources.displayMetrics.density).toInt() }
             data = barData
             xAxis.valueFormatter = IndexAxisValueFormatter(labels)
             xAxis.axisMinimum = 0f

@@ -145,13 +145,6 @@
   <string name="file_error">Nie udało się ukończyć operacji. Sprawdź plik i spróbuj ponownie.</string>
   <string name="backup_notice">Kopie zawierają dane finansowe. Zapisuj je w prywatnym miejscu. Eksport obejmuje wybrany miesiąc i aktywne filtry.</string>
   <string name="filtered_count">Wyświetlono: %1$d · %2$s</string>
-  <string name="scan_receipt">Skanuj paragon</string>
-  <string name="receipt_camera">Zrób zdjęcie</string>
-  <string name="receipt_photo">Wybierz zdjęcie</string>
-  <string name="receipt_review">Sprawdź kwotę, datę, nazwę i kategorię. Rozpoznawanie działa najlepiej dla paragonów angielskich i polskich; tekst ukraiński może wymagać poprawy.</string>
-  <string name="receipt_progress">Rozpoznawanie paragonu…</string>
-  <string name="receipt_error">Nie udało się odczytać paragonu. Spróbuj wyraźniejszego zdjęcia.</string>
-  <string name="receipt_currency">Waluta paragonu: %1$s. Waluta aplikacji: %2$s. Kwota nie jest przeliczana.</string>
 
     <string name="notification_settings">Powiadomienia</string>
     <string name="notify_limits">Ostrzeżenia o limitach budżetu</string>
@@ -183,4 +176,5 @@
 <string name="mint_goal_safety">Rezerwa finansowa dla spokoju.</string>
 <string name="mint_more_analytics">Więcej analiz</string>
 <string name="mint_goal_actions">Działania celu</string>
+  <string name="category_chart_empty">Brak wydatków w tym miesiącu.\nWybierz inny miesiąc lub dodaj wydatek.</string>
 </resources>

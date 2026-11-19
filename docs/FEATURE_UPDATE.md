@@ -46,15 +46,6 @@ Ideas for later: recurring bills with reminders, savings goals, month selector a
 - Backup v1 includes all six data tables, currency, language, theme, dark mode and forecast settings. Restore validates format, schema fields and references and replaces database records in one transaction. It asks for confirmation because it replaces existing data. Maximum backup/import size: 10 MiB, up to 100,000 rows per table. Files are plain JSON, not encrypted; save in a private location.
 
 
-## Receipt scanning
-- Scan receipt in the top bar or new-purchase dialog opens Camera / Choose photo.
-- Camera uses the system camera and a FileProvider limited to cache/receipts; photo import uses the system image picker. No broad storage access is requested.
-- Bundled ML Kit Latin text recognizer processes photos on the device. English/Polish receipts are the supported starting point. Ukrainian Cyrillic text can be incomplete and must be corrected manually.
-- Suggested merchant title, a total from explicit total-label lines, and a valid nonfuture date prefill the purchase form. The OCR text becomes the editable note. Category remains a user choice. If no total is found, the amount stays blank.
-- Every scan opens review before Save; mismatched receipt/app currency is shown and no currency conversion occurs.
-- Camera capture URI survives activity recreation; recognition runs in the ViewModel. Photos are temporary cache items and are not included in JSON backups.
-- Added parser tests for subtotal/cash/change exclusion, grouped comma amounts, missing totals and invalid/future dates.
-
 
 ## Money activity notifications
 - Settings > Notifications: independent switches for budget warnings, expense additions/edits/deletions/restores, recorded recurring payments, and savings contributions. Preferences persist and are included in JSON backups.
@@ -86,3 +77,10 @@ Ideas for later: recurring bills with reminders, savings goals, month selector a
 - JSON backup format v2 includes both new tables. Restore accepts v1/v2, validates transfer pairs and references, and rolls back invalid imports. v1 imports create Main account and preserve old purchases.
 - Charts > History-based forecast compares a trailing average (up to three prior full months) and current-month pace. It excludes the first recorded month from training because it may be partial. Backtests use only information available before each target/cutoff, and display MAE and sample counts. Sparse or incomplete history is explicitly identified.
 - Separate FinanceViewModel/FinanceDao and a pure SpendingForecast module keep new responsibilities outside MainActivity/BudgetViewModel.
+
+## Analytics and demo data refresh
+- Receipt scanning and its ML Kit dependency have been removed.
+- Category names appear directly beside the horizontal comparison bars, wrapped within a fixed-width label column.
+- Selecting a monthly bar updates the amount badge and month summary; zero-spending months can also be selected.
+- The forecast dialog shows two concise estimates, with accuracy available separately.
+- Fresh installations receive a coherent six-month example dataset. Existing installations retain their records; the explicitly requested demo setup backs them up before replacing them.

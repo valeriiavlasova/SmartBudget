@@ -9,11 +9,12 @@ Aplikacja na Androida do zarządzania finansami osobistymi: wydatkami, budżetem
 - Konta, dochody i przelewy wewnętrzne.
 - Cele oszczędnościowe i płatności cykliczne.
 - Wykresy i prognoza wydatków z oceną błędu na danych historycznych.
-- Skanowanie paragonów z weryfikacją rozpoznanych danych.
 - Eksport CSV/PDF, kopie zapasowe JSON i ich przywracanie.
 - Trzy języki, 13 motywów kolorystycznych, tryb jasny i ciemny.
 
 Pełny skrócony opis: [Funkcje aplikacji](docs/FUNKCJE_PL.md).
+
+W aktualnej wersji nazwy kategorii znajdują się przy słupkach, dotknięcie miesiąca pokazuje wydaną kwotę, a podsumowanie prognozy jest krótsze. Pusty wykres pokazuje czytelny komunikat o braku wydatków. Usunięto skanowanie paragonów.
 
 ## Uruchomienie
 
@@ -40,10 +41,14 @@ Testy urządzeniowe wymagają uruchomionego emulatora lub podłączonego urządz
 
 ## Technologie
 
-Kotlin, XML Views, ViewBinding, MVVM, Room, LiveData, Kotlin Coroutines, WorkManager, ML Kit i MPAndroidChart.
+Kotlin, XML Views, ViewBinding, MVVM, Room, LiveData, Kotlin Coroutines, WorkManager i MPAndroidChart.
 
 ## Informacje o danych
 
 Operacje finansowe są rejestrowane ręcznie. Aplikacja nie wykonuje płatności bankowych ani konwersji walut. Kopie JSON nie są szyfrowane. Przy pierwszym uruchomieniu tworzony jest przykładowy budżet i demonstracyjne wydatki.
 
 Przed udostępnieniem nie dodawaj do repozytorium kluczy podpisywania, rzeczywistych danych finansowych ani plików z danymi dostępowymi.
+
+Dane demonstracyjne obejmują sześć miesięcy wydatków i dochodów, przelewy, trzy konta, limity miesięczne (również na kolejny miesiąc), cele i płatności cykliczne. Nowa instalacja tworzy przykłady automatycznie. Aktualizacja istniejącej instalacji zachowuje dane użytkownika.
+
+Przykładowa kopia do importu: [SmartBudget-demo.json](examples/SmartBudget-demo.json). Zawiera 127 wydatków z sześciu miesięcy oraz konta, dochody, przelewy, budżety i plany. Import przez Files → Continue → Przywróć kopię zastępuje bieżące dane i ustawienia.

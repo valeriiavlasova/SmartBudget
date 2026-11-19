@@ -145,13 +145,6 @@
   <string name="file_error">Could not complete the operation. Check the file and try again.</string>
   <string name="backup_notice">Backups contain your financial data. Save them in a private location. Exports include only the selected month and active filters.</string>
   <string name="filtered_count">Shown: %1$d · %2$s</string>
-  <string name="scan_receipt">Scan receipt</string>
-  <string name="receipt_camera">Take photo</string>
-  <string name="receipt_photo">Choose photo</string>
-  <string name="receipt_review">Check the amount, date, title and category before saving. Recognition works best with English and Polish receipts; Ukrainian text may need manual correction.</string>
-  <string name="receipt_progress">Recognizing receipt…</string>
-  <string name="receipt_error">Could not read the receipt. Try a sharper photo.</string>
-  <string name="receipt_currency">Receipt currency: %1$s. App currency: %2$s. Amount is not converted.</string>
 
     <string name="notification_settings">Notifications</string>
     <string name="notify_limits">Budget limit warnings</string>
@@ -183,4 +176,5 @@
 <string name="mint_goal_safety">A financial safety net for peace of mind.</string>
 <string name="mint_more_analytics">More analytics</string>
 <string name="mint_goal_actions">Goal actions</string>
+  <string name="category_chart_empty">No expenses this month.\nChoose another month or add an expense.</string>
 </resources>

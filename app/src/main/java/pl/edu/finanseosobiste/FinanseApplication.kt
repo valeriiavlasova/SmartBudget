@@ -8,7 +8,10 @@ import pl.edu.finanseosobiste.notifications.LimitCheckWorker
 import pl.edu.finanseosobiste.notifications.NotificationHelper
 import java.util.concurrent.TimeUnit
 
-class FinanseApplication : Application() {
+class FinanseApplication : Application(), androidx.work.Configuration.Provider {
+
+    override val workManagerConfiguration: androidx.work.Configuration
+        get() = androidx.work.Configuration.Builder().build()
 
     override fun onCreate() {
         super.onCreate()

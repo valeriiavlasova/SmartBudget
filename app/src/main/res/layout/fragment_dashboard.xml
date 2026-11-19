@@ -24,7 +24,6 @@
 </LinearLayout></com.google.android.material.card.MaterialCardView>
 <LinearLayout android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginTop="18dp">
 <com.google.android.material.button.MaterialButton android:id="@+id/addPurchase" style="@style/Mint.Action" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:text="@string/add_expense_fab" app:icon="@drawable/ic_add"/>
-<com.google.android.material.button.MaterialButton android:id="@+id/scanPurchase" style="@style/Mint.Action" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:layout_marginStart="12dp" android:text="@string/scan_receipt" android:textColor="@color/text_primary" app:backgroundTint="?attr/colorPrimaryContainer" app:iconTint="@color/text_primary" app:icon="@drawable/ic_mint_scan"/>
 </LinearLayout>
 <EditText android:id="@+id/searchPurchases" android:importantForAutofill="no" android:layout_width="match_parent" android:layout_height="44dp" android:layout_marginTop="18dp" android:background="@drawable/mint_search" android:paddingHorizontal="16dp" android:drawableStart="@drawable/ic_mint_search" android:drawablePadding="12dp" android:textSize="14sp" android:hint="@string/search_purchases" android:singleLine="true" android:inputType="text"/>
 <LinearLayout android:layout_width="match_parent" android:layout_height="48dp" android:gravity="center_vertical" android:layout_marginTop="6dp">

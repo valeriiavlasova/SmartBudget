@@ -110,10 +110,13 @@ class FinanceTest {
    .allowMainThreadQueries().addCallback(AppDatabase.PrepopulateCallback()).build()
   try {
    val sql=seeded.openHelper.readableDatabase
-   for((table,count) in listOf("accounts" to 1,"categories" to 6,"expenses" to 5,"budget_config" to 1)) {
+   for((table,count) in listOf("accounts" to 3,"categories" to 6,"budget_config" to 1,"savings_goals" to 3,"recurring_payments" to 4,"month_budgets" to 7)) {
     sql.query("SELECT COUNT(*) FROM $table").use { it.moveToFirst();assertEquals(count,it.getInt(0)) }
    }
    sql.query("PRAGMA foreign_key_check").use { assertFalse(it.moveToFirst()) }
+   sql.query("SELECT COUNT(DISTINCT strftime('%Y-%m',timestamp/1000,'unixepoch','localtime')) FROM expenses").use { it.moveToFirst();assertEquals(6,it.getInt(0)) }
+   sql.query("SELECT COUNT(*) FROM expenses WHERE timestamp>?",arrayOf(System.currentTimeMillis())).use { it.moveToFirst();assertEquals(0,it.getInt(0)) }
+   sql.query("SELECT transferKey FROM cash_entries WHERE kind='TRANSFER' GROUP BY transferKey HAVING COUNT(*)!=2 OR SUM(amountMinor)!=0").use { assertFalse(it.moveToFirst()) }
   } finally { seeded.close() }
  }
  @Test fun savingsCannotOverflowLimit()=runBlocking {

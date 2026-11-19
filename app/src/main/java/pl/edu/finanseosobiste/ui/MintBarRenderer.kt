@@ -10,6 +10,7 @@ import com.github.mikephil.charting.utils.ViewPortHandler
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 
 class MintBarRenderer(private val chart: BarChart, animator: ChartAnimator, handler: ViewPortHandler) : BarChartRenderer(chart, animator, handler) {
+    var selectedIndex: Int = -1
     private val paint=Paint(Paint.ANTI_ALIAS_FLAG)
     private val density=chart.resources.displayMetrics.density
     override fun drawDataSet(c: Canvas, dataSet: IBarDataSet, index: Int) {
@@ -25,7 +26,7 @@ class MintBarRenderer(private val chart: BarChart, animator: ChartAnimator, hand
     override fun drawValues(c: Canvas) {
         val set=chart.barData?.getDataSetByIndex(0) ?: return
         if(set.entryCount==0) return
-        val entry=set.getEntryForIndex(set.entryCount-1)
+        val entry=set.getEntryForIndex(if(selectedIndex in 0 until set.entryCount) selectedIndex else set.entryCount-1)
         if(entry.y<=0f) return
         val point=chart.getTransformer(set.axisDependency).getPixelForValues(entry.x,entry.y)
         val label=MintUi.money(entry.y.toDouble())

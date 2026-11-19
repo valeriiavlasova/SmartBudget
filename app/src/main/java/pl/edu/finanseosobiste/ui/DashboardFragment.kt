@@ -46,7 +46,6 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.addPurchase.setOnClickListener { (requireActivity() as MainActivity).showAddExpenseDialog() }
-        binding.scanPurchase.setOnClickListener { (requireActivity() as MainActivity).receiptSources() }
 
         binding.btnMonth.setOnClickListener { chooseMonth() }
         binding.previousMonth.setOnClickListener { viewModel.selectedMonth.value = viewModel.selectedMonth.value!!.minusMonths(1) }

@@ -21,26 +21,6 @@ import pl.edu.finanseosobiste.util.LimitStatus
 
 class BudgetViewModel(application: Application) : AndroidViewModel(application) {
 
-    val receiptDraft=androidx.lifecycle.MutableLiveData<pl.edu.finanseosobiste.util.ReceiptDraft?>()
-    val receiptBusy=androidx.lifecycle.MutableLiveData(false)
-    fun scanReceipt(uri: android.net.Uri) {
-        if(receiptBusy.value==true) return
-        receiptBusy.value=true
-        viewModelScope.launch(Dispatchers.IO) {
-            var recognizer: com.google.mlkit.vision.text.TextRecognizer?=null
-            try {
-                val image=com.google.mlkit.vision.common.InputImage.fromFilePath(getApplication(),uri)
-                val client=com.google.mlkit.vision.text.TextRecognition.getClient(com.google.mlkit.vision.text.latin.TextRecognizerOptions.DEFAULT_OPTIONS)
-                recognizer=client
-                client.process(image).addOnSuccessListener { result ->
-                    if(result.text.isBlank()) plannerMessage.postValue(pl.edu.finanseosobiste.R.string.receipt_error)
-                    else receiptDraft.postValue(pl.edu.finanseosobiste.util.ReceiptParser.parse(result.text))
-                }.addOnFailureListener { plannerMessage.postValue(pl.edu.finanseosobiste.R.string.receipt_error) }
-                    .addOnCompleteListener { client.close();receiptBusy.postValue(false) }
-            } catch(e: kotlinx.coroutines.CancellationException) { recognizer?.close();receiptBusy.postValue(false);throw e }
-            catch(_: Exception) { recognizer?.close();receiptBusy.postValue(false);plannerMessage.postValue(pl.edu.finanseosobiste.R.string.receipt_error) }
-        }
-    }
     var exportRows: List<pl.edu.finanseosobiste.data.ExpenseWithCategory> = emptyList()
     fun deleteWithUndo(expense: pl.edu.finanseosobiste.data.ExpenseWithCategory, onDeleted: () -> Unit) {
         viewModelScope.launch {

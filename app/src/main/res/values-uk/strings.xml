@@ -145,13 +145,6 @@
   <string name="file_error">Не вдалося завершити операцію. Перевірте файл і спробуйте ще раз.</string>
   <string name="backup_notice">Копії містять ваші фінансові дані. Зберігайте їх у приватному місці. Експорт містить лише вибраний місяць з активними фільтрами.</string>
   <string name="filtered_count">Показано: %1$d · %2$s</string>
-  <string name="scan_receipt">Сканувати чек</string>
-  <string name="receipt_camera">Зробити фото</string>
-  <string name="receipt_photo">Вибрати фото</string>
-  <string name="receipt_review">Перевірте суму, дату, назву та категорію перед збереженням. Розпізнавання найкраще працює з англійськими й польськими чеками; український текст може потребувати виправлення.</string>
-  <string name="receipt_progress">Розпізнавання чека…</string>
-  <string name="receipt_error">Не вдалося прочитати чек. Спробуйте чіткіше фото.</string>
-  <string name="receipt_currency">Валюта чека: %1$s. Валюта застосунку: %2$s. Суму не конвертовано.</string>
 
     <string name="notification_settings">Сповіщення</string>
     <string name="notify_limits">Попередження про ліміти бюджету</string>
@@ -183,4 +176,5 @@
 <string name="mint_goal_safety">Фінансовий запас для спокою.</string>
 <string name="mint_more_analytics">Більше аналітики</string>
 <string name="mint_goal_actions">Дії з ціллю</string>
+  <string name="category_chart_empty">Цього місяця витрат ще немає.\nВиберіть інший місяць або додайте витрату.</string>
 </resources>
